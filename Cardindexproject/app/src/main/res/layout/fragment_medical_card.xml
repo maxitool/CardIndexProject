@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MedicalCardFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingHorizontal="10dp"
+            android:layout_gravity="center_horizontal"
+            android:animateLayoutChanges="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <ImageButton
+                    android:id="@+id/imageButtonCloseDocument"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_main_document_alternative_button"
+                    android:contentDescription="@string/close_doc_ru"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="2dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_close" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="22sp"
+                    android:textColor="@color/text_black_dark"
+                    android:text="@string/medical_card_ru" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonSaveDocument"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/shape_main_document_alternative_button"
+                    android:contentDescription="@string/save_doc_ru"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="4dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_save_red" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/fio_ru"
+                android:textSize="20sp"
+                android:textColor="@color/text_black_light" />
+
+            <EditText
+                android:id="@+id/editTextFullName"
+                android:layout_width="360dp"
+                android:layout_height="48dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/text_black"
+                android:hint="@string/fio_ru" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/date_of_birth_ru"
+                android:textSize="20sp"
+                android:textColor="@color/text_black_light"/>
+
+            <EditText
+                android:id="@+id/editTextBirthDate"
+                android:layout_width="360dp"
+                android:layout_height="48dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:textColor="@color/text_black"
+                android:hint="@string/date_of_birth_ru"
+                android:inputType="date"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/city_of_residence_ru"
+                android:textSize="20sp"
+                android:textColor="@color/text_black_light"/>
+
+            <EditText
+                android:id="@+id/editTextResidenceCity"
+                android:layout_width="360dp"
+                android:layout_height="48dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/text_black"
+                android:hint="@string/city_of_residence_ru"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutComplaints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:id="@+id/imageViewComplaints"
+                    android:layout_width="26sp"
+                    android:layout_height="26sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_down_arrow"
+                    android:foregroundTint="@color/text_above_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/complaints_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextComplaints"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:minHeight="96dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:gravity="start"
+                android:textColor="@color/text_black"
+                android:hint="@string/complaints_ru"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/dental_formula_ru"
+                android:textSize="20sp"
+                android:textColor="@color/text_black_light"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:textColor="@color/text_black"
+                android:text="NO_DATA"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutAnamnesis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:id="@+id/imageViewAnamnesis"
+                    android:layout_width="26sp"
+                    android:layout_height="26sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_down_arrow"
+                    android:foregroundTint="@color/text_above_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/anamnesis_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextAnamnesis"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:minHeight="96dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:gravity="start"
+                android:textColor="@color/text_black"
+                android:hint="@string/anamnesis_ru"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutObjectively"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:id="@+id/imageViewObjectively"
+                    android:layout_width="26sp"
+                    android:layout_height="26sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_down_arrow"
+                    android:foregroundTint="@color/text_above_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/objectively_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextObjectively"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:minHeight="96dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:gravity="start"
+                android:textColor="@color/text_black"
+                android:hint="@string/objectively_ru"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDiagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:id="@+id/imageViewDiagnosis"
+                    android:layout_width="26sp"
+                    android:layout_height="26sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_down_arrow"
+                    android:foregroundTint="@color/text_above_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/diagnosis_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextDiagnosis"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:minHeight="96dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:gravity="start"
+                android:textColor="@color/text_black"
+                android:hint="@string/diagnosis_ru"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTreatment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:id="@+id/imageViewTreatment"
+                    android:layout_width="26sp"
+                    android:layout_height="26sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_down_arrow"
+                    android:foregroundTint="@color/text_above_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/treatment_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextTreatment"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:minHeight="96dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/shape_edittext"
+                android:layout_gravity="center_horizontal"
+                android:gravity="start"
+                android:textColor="@color/text_black"
+                android:hint="@string/treatment_ru"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutFiles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="2dp">
+
+                <ImageView
+                    android:id="@+id/imageViewFiles"
+                    android:layout_width="26sp"
+                    android:layout_height="26sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_down_arrow"
+                    android:foregroundTint="@color/text_above_edittext"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/files_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imageButtonFiles"
+                android:layout_width="360dp"
+                android:layout_height="48dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:src="@drawable/icon_add"
+                android:scaleType="fitCenter"
+                android:background="@drawable/shape_alternative_button"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

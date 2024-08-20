@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- градиент alternative, не получилось вставить как drawable -->
+    <gradient android:startColor="@color/main_alternative_start"
+        android:centerColor="@color/main_alternative_center"
+        android:endColor="@color/main_alternative_end"
+        android:type="linear"
+        android:angle="270" />
+    <corners
+        android:topLeftRadius="15dp"
+        android:topRightRadius="15dp"
+        android:bottomLeftRadius="15dp"
+        android:bottomRightRadius="0dp"/>
+</shape>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main theme colors. -->
+    <color name="main_background_start">#FFBAC67B</color>
+    <color name="main_background_center">#FFCAD68B</color>
+    <color name="main_background_end">#FFDAE69B</color>
+    <color name="main_header_start">#FF414628</color>
+    <color name="main_header_center">#FF515638</color>
+    <color name="main_header_end">#FF616648</color>
+    <color name="main_alternative_start">#FF907C9C</color>
+    <color name="main_alternative_center">#FFA08CAC</color>
+    <color name="main_alternative_end">#FFB09CBC</color>
+
+    <color name="main_important">#FF515638</color>
+    <color name="main_alternative_1">#FFA08CAC</color>
+    <color name="main_alternative_1_light">#FFA895B5</color>
+    <color name="main_alternative_2">#FF8BADD6</color>
+
+    <!-- Primary colors. -->
+    <color name="text_transparency">#B0828282</color>
+    <color name="text_above_edittext">#BB000000</color>
+    <color name="shadow">#77000000</color>
+    <color name="edit_photo">#7F000000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="error">#CCFF0000</color>
+    <color name="dark_red">#FFCC0000</color>
+    <color name="dark_blue">#FF0000CC</color>
+    <color name="dark_green">#FF00CC00</color>
+    <color name="grey">#808080</color>
+
+    <!-- Text colors. -->
+    <color name="text_black_light">#303030</color>
+    <color name="text_black">#202020</color>
+    <color name="text_black_dark">#101010</color>
+    <color name="text_black_very_dark">#000000</color>
+    <color name="text_white">#FFFFFF</color>
+
+</resources>

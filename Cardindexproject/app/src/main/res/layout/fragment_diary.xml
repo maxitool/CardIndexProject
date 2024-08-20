@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DiaryFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/documents_ru"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="4dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonCurrent"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="3dp"
+                    android:background="@drawable/shape_main_important_button"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:text="Текущие"
+                    android:textAllCaps="false"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="3dp"
+                    android:background="@drawable/shape_alternative_button"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:text="История"
+                    android:textAllCaps="false"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonServer"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="4dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="3dp"
+                    android:background="@drawable/shape_alternative_button"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:text="Сервер"
+                    android:textAllCaps="false"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationZ="2dp"
+                android:layout_marginHorizontal="4dp">
+
+                <ImageButton
+                    android:id="@+id/imageButtonAddDocument"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/shape_main_document_alternative_button"
+                    android:contentDescription="@string/add_doc_ru"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_add" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonShowSearchMenu"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_toRightOf="@+id/imageButtonAddDocument"
+                    android:background="@drawable/shape_main_document_alternative_button"
+                    android:contentDescription="@string/show_search_menu_ru"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_search_drop_down" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonSort"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginHorizontal="4dp"
+                    android:background="@drawable/shape_main_document_alternative_button"
+                    android:contentDescription="@string/sort_docs_ru"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="6dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_sort" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonAllSendToServer"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_toLeftOf="@+id/imageButtonSort"
+                    android:paddingRight="7dp"
+                    android:paddingLeft="4dp"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="4dp"
+                    android:src="@drawable/icon_send"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/shape_main_document_alternative_button"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSearchMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:translationZ="2dp"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_edittext">
+
+                    <EditText
+                        android:id="@+id/editTextSearchField"
+                        android:layout_width="312dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@null"
+                        android:textColor="@color/text_black"
+                        android:hint="@string/search_ru"
+                        android:paddingVertical="10dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="4dp"
+                        android:translationZ="1dp" />
+
+                    <ImageButton
+                        android:id="@+id/imageViewButtonSearch"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:padding="4dp"
+                        android:background="@color/transparent"
+                        android:contentDescription="@string/app_name_ru"
+                        android:src="@drawable/icon_search"
+                        android:scaleType="fitXY"
+                        android:translationZ="2dp"
+                        android:foreground="?android:attr/selectableItemBackground"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="8dp"/>
+
+        </LinearLayout>
+
+</FrameLayout>

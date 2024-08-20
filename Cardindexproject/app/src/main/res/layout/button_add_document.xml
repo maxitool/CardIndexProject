@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="48dp"
+    android:minHeight="48dp"
+    android:paddingRight="8dp"
+    android:layout_marginRight="-8dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonDocument"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="36dp"
+        android:minHeight="36dp"
+        android:paddingBottom="2dp"
+        android:paddingRight="3dp"
+        android:contentDescription="@string/go_to_document_ru"
+        android:background="@drawable/shape_main_document_add_button"
+        android:layout_gravity="center"
+        android:text="+"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:gravity="center"
+        android:foreground="?android:attr/selectableItemBackground"/>
+
+</FrameLayout>

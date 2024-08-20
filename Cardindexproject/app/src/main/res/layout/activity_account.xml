@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_main_background"
+    android:orientation="vertical"
+    tools:context=".AccountActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient_main_header"
+        android:elevation="4dp"
+        android:theme="@style/Theme.MainTheme"
+        app:popupTheme="@style/Theme.MainTheme"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <pl.droidsonroids.gif.GifImageButton
+            android:id="@+id/gifImageButtonMenu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="8dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/menu_ru"/>
+
+        <TextView
+            android:id="@+id/textViewToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/account_ru"
+            android:textColor="@color/text_white"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/exit_ru"
+            android:src="@drawable/icon_exit_to_app"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+
+                <FrameLayout
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:padding="4dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/shape_blackcircle">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="1000dp">
+
+                        <ImageView
+                            android:id="@+id/imageViewPhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/icon_man_doctor"
+                            android:scaleType="fitXY"
+                            android:translationZ="1dp"/>
+
+                        <ImageButton
+                            android:id="@+id/imageButtonChangePhoto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="70dp"
+                            android:contentDescription="@string/edit_photo_ru"
+                            android:background="@color/edit_photo"
+                            android:src="@drawable/icon_camera"
+                            android:scaleType="fitXY"
+                            android:translationZ="2dp"
+                            android:visibility="gone"/>
+
+                    </androidx.cardview.widget.CardView>
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/fio_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+                <EditText
+                    android:id="@+id/editTextTextFIO"
+                    android:layout_width="360dp"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/shape_edittext"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/text_black"
+                    android:hint="@string/fio_ru" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/email_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+                <EditText
+                    android:id="@+id/editTextTextEmailAddress"
+                    android:layout_width="360dp"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/shape_edittext"
+                    android:layout_gravity="center_horizontal"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/text_black"
+                    android:hint="@string/email_ru" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/phone_ru"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black_light"/>
+
+                <EditText
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="360dp"
+                    android:layout_height="48dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/shape_edittext"
+                    android:layout_gravity="center_horizontal"
+                    android:ems="11"
+                    android:inputType="phone"
+                    android:textColor="@color/text_black"
+                    android:hint="@string/phone_ru" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutAlternativeMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="38dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:background="@drawable/shape_main_alternative_menu">
+
+                    <TextView
+                        android:id="@+id/textViewInstitutionNames"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/clinic_ru"
+                        android:textColor="@color/text_black_dark"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="@string/name_ru"
+                        android:textSize="20sp"
+                        android:textColor="@color/text_black_light"/>
+
+                    <EditText
+                        android:id="@+id/editTextInstitutionName"
+                        android:layout_width="360dp"
+                        android:layout_height="48dp"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/shape_edittext"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/text_black"
+                        android:hint="@string/name_ru" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="@string/inn_ru"
+                        android:textSize="20sp"
+                        android:textColor="@color/text_black_light"/>
+
+                    <EditText
+                        android:id="@+id/editTextInstitutionINN"
+                        android:layout_width="360dp"
+                        android:layout_height="48dp"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/shape_edittext"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/text_black"
+                        android:hint="@string/inn_ru" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonClinic"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:textColor="@color/text_black_very_dark"
+                            android:text="@string/clinic_ru"
+                            android:textSize="16sp"
+                            android:buttonTint="@color/main_important"
+                            android:checked="true"/>
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonPolyclinic"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:textColor="@color/text_black_very_dark"
+                            android:text="@string/polyclinic_ru"
+                            android:textSize="16sp"
+                            android:buttonTint="@color/main_important"/>
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/radioButtonOrganization"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:textColor="@color/text_black_very_dark"
+                            android:text="@string/organization_ru"
+                            android:textSize="16sp"
+                            android:buttonTint="@color/main_important"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonEditing"
+                    android:layout_width="320dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="3dp"
+                    android:background="@drawable/shape_main_important_button"
+                    android:textColor="@color/text_white"
+                    android:textSize="22sp"
+                    android:text="@string/editing_ru"
+                    android:textAllCaps="false"
+                    android:foreground="?android:attr/selectableItemBackground"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonCancel"
+                    android:layout_width="320dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="3dp"
+                    android:background="@drawable/shape_alternative_button"
+                    android:textColor="@color/text_black_very_dark"
+                    android:textSize="22sp"
+                    android:text="@string/cancel_ru"
+                    android:textAllCaps="false"
+                    android:visibility="gone"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:animateLayoutChanges="true"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

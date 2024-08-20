@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_main_background"
+    android:orientation="vertical"
+    tools:context=".DiaryActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/gradient_main_header"
+        android:elevation="4dp"
+        android:theme="@style/Theme.MainTheme"
+        app:popupTheme="@style/Theme.MainTheme"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <pl.droidsonroids.gif.GifImageButton
+            android:id="@+id/gifImageButtonMenu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="8dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/menu_ru"/>
+
+        <TextView
+            android:id="@+id/textViewToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/diary_ru"
+            android:textColor="@color/text_white"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/imageButtonAccount"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/go_to_account_ru"
+            android:src="@drawable/icon_account"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewDocuments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:translationZ="1dp"
+                    android:minHeight="64dp"
+                    android:padding="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="@drawable/shape_main_alternative_menu_no_right_corner"/>
+
+                <ImageButton
+                    android:id="@+id/imageButtonDropListDocuments"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="-16dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/shape_main_alternative_button_circle"
+                    android:contentDescription="@string/hide_show_doc_list_ru"
+                    android:paddingTop="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_doc_list_arrow_up"
+                    android:translationZ="2dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="-12dp"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="8dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="3 августа 2024"
+                        android:gravity="center"
+                        android:textColor="@color/text_black_dark"
+                        android:textSize="22sp"/>
+
+                    <ImageButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_main_document_alternative_button"
+                        android:contentDescription="@string/show_calendar_ru"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:paddingRight="3dp"
+                        android:paddingBottom="2dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/icon_calendar" />
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:id="@+id/frameLayoutFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </ScrollView>
+
+            </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list >
+            <item>
+                <shape android:shape="rectangle">
+                    // для нового типа темы нужно сменить цвет снизу
+                    <solid android:color="@color/main_important"/>
+                    <corners android:topLeftRadius="10dp"
+                        android:topRightRadius="10dp" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>
