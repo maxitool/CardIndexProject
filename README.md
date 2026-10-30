@@ -9,7 +9,9 @@
 
 ## 🎬 Видеопрезентация UI
 
-https://github.com
+<video src="https://github.com" controls="controls" style="max-width: 100%;">
+  Ваш браузер не поддерживает видео.
+</video>
 
 
 
