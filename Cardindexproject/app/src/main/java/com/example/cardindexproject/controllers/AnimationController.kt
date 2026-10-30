@@ -9,6 +9,7 @@ class AnimationController {
     private var context: Context
     private var gifDrawable: GifDrawable
     private var threadCheckAnim: ThreadCheckAnim? = null
+
     // Позиции состояний анимации
     private var arrayGifPositions: Array<Int> = arrayOf(0)
     private var gifPosition: Int = 0
@@ -23,31 +24,40 @@ class AnimationController {
         this.gifDrawable = GifDrawable(context.resources, idGifIcon)
         this.gifDrawable.stop()
     }
+
     /** * Initializing gif positions of animation. */
     fun setGifPositions(arrayGifPositions: Array<Int>) {
         if (arrayGifPositions.isEmpty()) throw Exception("No data in arrayGifPositions")
         val durationAnimation = GifDrawable(context.resources, idGifIcon).duration
-        for(i in arrayGifPositions.indices)
+        for (i in arrayGifPositions.indices)
             if (arrayGifPositions[i] > durationAnimation || arrayGifPositions[i] < 0)
                 throw Exception("Bad gif position of $i element in arrayGifPositions")
         this.arrayGifPositions = arrayGifPositions
         this.gifDrawable.seekTo(arrayGifPositions[0])
     }
+
     /** * Get GifDrawable of gif.
      * @return GifDrawable of gif. */
-    fun getGifDrawable(): GifDrawable { return gifDrawable }
+    fun getGifDrawable(): GifDrawable {
+        return gifDrawable
+    }
+
     /** * Get animation state of gif (true is active, false is disable).
      * @return Animation state of gif (true is active, false is disable). */
-    fun getAnimState(): Boolean { threadCheckAnim?.let{ return it.isAlive }; return false }
+    fun getAnimState(): Boolean {
+        threadCheckAnim?.let { return it.isAlive }; return false
+    }
+
     /** * Start animation.
      * @return New position of animation. */
-    fun startAnimation() : Int {
+    fun startAnimation(): Int {
         threadCheckAnim?.let { if (it.isAlive) return -1 }
         if (arrayGifPositions.isEmpty()) throw Exception("Please use setGifPositions function for init positions of gif animation")
         nextGifPosition = (gifPosition + 1) % arrayGifPositions.size
         startAnimThread()
         return nextGifPosition
     }
+
     /** * Start animation.
      * @param nextGifPosition next position of gif animation. */
     fun startAnimation(nextGifPosition: Int) {
@@ -57,8 +67,12 @@ class AnimationController {
         this.nextGifPosition = nextGifPosition % arrayGifPositions.size
         startAnimThread()
     }
+
     /** * Stop animation. */
-    fun stopAnimation() { threadCheckAnim?.let { it.stopThread() } }
+    fun stopAnimation() {
+        threadCheckAnim?.let { it.stopThread() }
+    }
+
     /** * Change position of animation without animation play.
      * @param newGifPosition gif position of animation. */
     fun changeAnimPosition(newGifPosition: Int) {
@@ -68,19 +82,24 @@ class AnimationController {
             gifDrawable.seekTo(arrayGifPositions[this.gifPosition])
         }
     }
+
     /** * Start animation thread. */
     private fun startAnimThread() {
         threadCheckAnim = ThreadCheckAnim()
         threadCheckAnim!!.start()
         gifDrawable.start()
     }
+
     /** * Thread for menu animation controller. */
-    private inner class ThreadCheckAnim : Thread()  {
+    private inner class ThreadCheckAnim : Thread() {
         private val SLEEPING_TIME = 100L
         private var isThreadStopped: Boolean = false
 
         /** * Stop thread for menu animation. */
-        fun stopThread() { isThreadStopped = true }
+        fun stopThread() {
+            isThreadStopped = true
+        }
+
         /** * Run thread for check menu animation. */
         override fun run() {
             super.run()
@@ -92,6 +111,7 @@ class AnimationController {
             gifDrawable.stop()
             changeAnimPosition(nextGifPosition)
         }
+
         /** * Get condition for check animation.
          * @return Result of condition for check animation. */
         private fun getCondition(): Boolean {

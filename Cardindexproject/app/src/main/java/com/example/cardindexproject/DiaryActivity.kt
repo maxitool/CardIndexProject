@@ -3,9 +3,7 @@ package com.example.cardindexproject
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageButton
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
@@ -33,8 +31,10 @@ class DiaryActivity : AppCompatActivity(),
     private val diaryViewModel: DiaryViewModel by lazy {
         ViewModelProvider(this)[DiaryViewModel::class.java]
     }
+
     // Класс с настройками
     private lateinit var settings: Settings
+
     // Контроллер для анимации меню
     private lateinit var menuAnimController: AnimationController
 
@@ -66,7 +66,7 @@ class DiaryActivity : AppCompatActivity(),
         imageButtonAccount.setOnClickListener { onAccountClicked() }
         recyclerViewDocuments = findViewById(R.id.recyclerViewDocuments)
         documentsAdapter = RecyclerViewDocFragmentsAdapter(this, arrayListDocuments)
-        val linearLayoutManager  = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewDocuments.layoutManager = linearLayoutManager
         recyclerViewDocuments.adapter = documentsAdapter
         imageButtonDropListDocuments = findViewById(R.id.imageButtonDropListDocuments)
@@ -87,17 +87,23 @@ class DiaryActivity : AppCompatActivity(),
     /** * Initializing animations. */
     private fun initAnimations() {
         menuAnimController = AnimationController(this, R.drawable.icon_menu)
-        menuAnimController.setGifPositions(arrayOf(0, GifDrawable(this.resources, R.drawable.icon_menu).duration / 2))
+        menuAnimController.setGifPositions(
+            arrayOf(
+                0,
+                GifDrawable(this.resources, R.drawable.icon_menu).duration / 2
+            )
+        )
         gifImageButtonMenu.setImageDrawable(menuAnimController.getGifDrawable())
     }
 
     private fun onMenuClicked() {
         val animPosition = menuAnimController.startAnimation()
         if (animPosition < 0) return
-        if (isMenuOpened)
+        if (isMenuOpened) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        else
+        } else {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
         isMenuOpened = !isMenuOpened
     }
 

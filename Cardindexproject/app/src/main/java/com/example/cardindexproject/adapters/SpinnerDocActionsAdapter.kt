@@ -11,7 +11,11 @@ import androidx.core.content.ContextCompat
 import com.example.cardindexproject.R
 import com.example.cardindexproject.data.DocActionDisplayOptions
 
-class SpinnerDocActionsAdapter(context: Context, layoutResource: Int, private val arrayDocActions: Array<DocActionDisplayOptions>) :
+class SpinnerDocActionsAdapter(
+    context: Context,
+    layoutResource: Int,
+    private val arrayDocActions: Array<DocActionDisplayOptions>
+) :
     ArrayAdapter<DocActionDisplayOptions>(context, layoutResource, arrayDocActions) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -19,7 +23,8 @@ class SpinnerDocActionsAdapter(context: Context, layoutResource: Int, private va
     }
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView?: LayoutInflater.from(context).inflate(R.layout.item_spinner_dropdown_doc, parent, false) as View
+        val view = convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.item_spinner_dropdown_doc, parent, false) as View
         val textView = view.findViewById<TextView>(R.id.textViewNoteAction)
         val imageView = view.findViewById<ImageView>(R.id.imageViewNoteAction)
         val item = getItem(position)

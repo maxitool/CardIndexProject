@@ -3,7 +3,7 @@ package com.example.cardindexproject.settings
 import android.content.Context
 import android.content.SharedPreferences
 
-class Settings{
+class Settings {
     private var context: Context
     private var sharedPreferences: SharedPreferences
     private var editor: SharedPreferences.Editor
@@ -17,7 +17,7 @@ class Settings{
         this.colorsSettings = ColorsSettings(sharedPreferences, editor)
     }
 
-    companion object{
+    companion object {
         private const val NAME_FILE = "AppSettings"
     }
 }

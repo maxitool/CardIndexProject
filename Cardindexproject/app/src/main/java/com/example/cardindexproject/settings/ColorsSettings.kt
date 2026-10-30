@@ -17,14 +17,14 @@ class ColorsSettings {
     }
 
     fun setNewThemeType(typeTheme: String) {
-        when(typeTheme) {
+        when (typeTheme) {
             colorTheme1 ->
                 editor.putString(keyTheme, colorTheme1).apply()
             // здесь нужно добавить новые типы тем, если были добавлены типы тем
         }
     }
 
-    fun getTheme() : Int {
+    fun getTheme(): Int {
         when (typeTheme) {
             colorTheme1 -> return R.style.Theme_MainTheme
             // здесь нужно добавить новые темы, если были добавлены типы тем
@@ -98,6 +98,7 @@ class ColorsSettings {
 
     companion object {
         private const val keyTheme = "theme"
+
         // ниже типы тем, вы можете добавлять новые темы
         private const val colorTheme1 = "main"
     }

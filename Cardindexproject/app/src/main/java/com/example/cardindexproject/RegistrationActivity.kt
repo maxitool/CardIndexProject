@@ -27,11 +27,14 @@ class RegistrationActivity : AppCompatActivity() {
     private val registrationViewModel: RegistrationViewModel by lazy {
         ViewModelProvider(this)[RegistrationViewModel::class.java]
     }
+
     // Класс с настройками
     private lateinit var settings: Settings
+
     // Для анимации глаза
     private val COUNT_EYES: Int = 2
     private var arrayEyeAnimControllers: Array<AnimationController> = arrayOf()
+
     // Все view
     private lateinit var arrayGifImageButtonsEyes: Array<GifImageButton>
     private lateinit var arrayEditTextTextPasswords: Array<EditText>
@@ -66,11 +69,13 @@ class RegistrationActivity : AppCompatActivity() {
         initAnimations()
         setColors()
     }
+
     override fun onPause() {
         super.onPause()
         // Останавка анимаций для глаз
-        for (i in arrayEyeAnimControllers.indices)
+        for (i in arrayEyeAnimControllers.indices) {
             arrayEyeAnimControllers[i].stopAnimation()
+        }
         // Сохранение всех важных данных с страницы в ViewModel
         registrationViewModel.loginText = editTextTextEmailAddress.text.toString()
         registrationViewModel.passwordText = arrayEditTextTextPasswords[0].text.toString()
@@ -79,8 +84,10 @@ class RegistrationActivity : AppCompatActivity() {
         registrationViewModel.phoneText = editTextPhone.text.toString()
         registrationViewModel.institutionNameText = editTextInstitutionName.text.toString()
         registrationViewModel.institutionINNText = editTextInstitutionINN.text.toString()
-        registrationViewModel.idInstitutionType = radioGroup.indexOfChild(findViewById(radioGroup.checkedRadioButtonId))
+        registrationViewModel.idInstitutionType =
+            radioGroup.indexOfChild(findViewById(radioGroup.checkedRadioButtonId))
     }
+
     override fun onResume() {
         super.onResume()
         // Вставка состояний глаз и текстовых полей с паролем с ViewModel на страницу
@@ -96,16 +103,26 @@ class RegistrationActivity : AppCompatActivity() {
         editTextPhone.setText(registrationViewModel.phoneText)
         editTextInstitutionName.setText(registrationViewModel.institutionNameText)
         editTextInstitutionINN.setText(registrationViewModel.institutionINNText)
-        val radioButtonChecked = radioGroup.getChildAt(registrationViewModel.idInstitutionType) as AppCompatRadioButton
+        val radioButtonChecked =
+            radioGroup.getChildAt(registrationViewModel.idInstitutionType) as AppCompatRadioButton
         radioButtonChecked.isChecked = true
     }
+
     /** * Initializing animations. */
     private fun initAnimations() {
         for (i in 0 until COUNT_EYES) {
             arrayEyeAnimControllers += AnimationController(this, R.drawable.icon_eye)
-            arrayEyeAnimControllers[i].setGifPositions(arrayOf(0, GifDrawable(this.resources, R.drawable.icon_eye).duration / 2))
+            arrayEyeAnimControllers[i].setGifPositions(
+                arrayOf(
+                    0,
+                    GifDrawable(this.resources, R.drawable.icon_eye).duration / 2
+                )
+            )
         }
-        arrayGifImageButtonsEyes = arrayOf(findViewById(R.id.gifImageButtonEye), findViewById(R.id.gifImageButtonConfirmEye))
+        arrayGifImageButtonsEyes = arrayOf(
+            findViewById(R.id.gifImageButtonEye),
+            findViewById(R.id.gifImageButtonConfirmEye)
+        )
         arrayGifImageButtonsEyes[0].setImageDrawable(arrayEyeAnimControllers[0].getGifDrawable())
         arrayGifImageButtonsEyes[1].setImageDrawable(arrayEyeAnimControllers[1].getGifDrawable())
         // Нажатие на глаза
@@ -116,6 +133,7 @@ class RegistrationActivity : AppCompatActivity() {
             changeEyeState(1)
         }
     }
+
     /** * Initializing views. */
     private fun initAllViews() {
         main = findViewById(R.id.main)
@@ -126,7 +144,10 @@ class RegistrationActivity : AppCompatActivity() {
         editTextTextFIO = findViewById(R.id.editTextTextFIO)
         editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress)
         editTextPhone = findViewById(R.id.editTextPhone)
-        arrayEditTextTextPasswords = arrayOf(findViewById(R.id.editTextTextPassword), findViewById(R.id.editTextConfirmTextPassword))
+        arrayEditTextTextPasswords = arrayOf(
+            findViewById(R.id.editTextTextPassword),
+            findViewById(R.id.editTextConfirmTextPassword)
+        )
         linearLayoutAlternativeMenu = findViewById(R.id.linearLayoutAlternativeMenu)
         editTextInstitutionName = findViewById(R.id.editTextInstitutionName)
         editTextInstitutionINN = findViewById(R.id.editTextInstitutionINN)
@@ -138,27 +159,41 @@ class RegistrationActivity : AppCompatActivity() {
         // Listener'ы
         imageButtonBack.setOnClickListener { onGoPreviousActivity() }
     }
+
     /** * Set colors for views. */
     private fun setColors() {
         main.setBackgroundResource(settings.colorsSettings.getGradientBackground())
         toolbar.setBackgroundResource(settings.colorsSettings.getGradientHeader())
         linearLayoutAlternativeMenu.setBackgroundResource(settings.colorsSettings.getAlternativeMenuShape())
-        CompoundButtonCompat.setButtonTintList(radioButtonClinic, ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant()))
-        CompoundButtonCompat.setButtonTintList(radioButtonPolyclinic, ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant()))
-        CompoundButtonCompat.setButtonTintList(radioButtonOrganization, ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant()))
+        CompoundButtonCompat.setButtonTintList(
+            radioButtonClinic,
+            ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant())
+        )
+        CompoundButtonCompat.setButtonTintList(
+            radioButtonPolyclinic,
+            ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant())
+        )
+        CompoundButtonCompat.setButtonTintList(
+            radioButtonOrganization,
+            ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant())
+        )
         buttonRegistration.setBackgroundResource(settings.colorsSettings.getColorImportant())
     }
+
     /** * Set password state (show or don't show password).
      * @param id Id of eye gif */
     private fun setPasswordState(idEye: Int) {
         if (registrationViewModel.arrayEyesStates[idEye] == 0) {
-            arrayEditTextTextPasswords[idEye].transformationMethod = HideReturnsTransformationMethod.getInstance()
+            arrayEditTextTextPasswords[idEye].transformationMethod =
+                HideReturnsTransformationMethod.getInstance()
             arrayEditTextTextPasswords[idEye].setSelection(arrayEditTextTextPasswords[idEye].length())
             return
         }
-        arrayEditTextTextPasswords[idEye].transformationMethod = PasswordTransformationMethod.getInstance()
+        arrayEditTextTextPasswords[idEye].transformationMethod =
+            PasswordTransformationMethod.getInstance()
         arrayEditTextTextPasswords[idEye].setSelection(arrayEditTextTextPasswords[idEye].length())
     }
+
     /** * Change state of eye animation (open\close).
      * @param idEye Id of eye gif. */
     private fun changeEyeState(idEye: Int) {
@@ -169,5 +204,8 @@ class RegistrationActivity : AppCompatActivity() {
             setPasswordState(idEye)
         }
     }
-    private fun onGoPreviousActivity() { finish() }
+
+    private fun onGoPreviousActivity() {
+        finish()
+    }
 }

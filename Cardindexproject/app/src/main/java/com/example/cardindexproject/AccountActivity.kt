@@ -23,8 +23,10 @@ import pl.droidsonroids.gif.GifImageButton
 class AccountActivity : AppCompatActivity() {
     // Класс с настройками
     private lateinit var settings: Settings
+
     // Контроллер для анимации меню
     private lateinit var menuAnimController: AnimationController
+
     // Все view
     private lateinit var scrollView: ScrollView
     private lateinit var drawerLayout: DrawerLayout
@@ -52,6 +54,7 @@ class AccountActivity : AppCompatActivity() {
         initAllViews()
         initAnimations()
     }
+
     /** * Initializing views. */
     private fun initAllViews() {
         scrollView = findViewById(R.id.scrollView)
@@ -67,12 +70,19 @@ class AccountActivity : AppCompatActivity() {
         gifImageButtonMenu.setOnClickListener { onMenuClicked() }
         buttonEditing.setOnClickListener { onChangeEditState() }
     }
+
     /** * Initializing animations. */
     private fun initAnimations() {
         menuAnimController = AnimationController(this, R.drawable.icon_menu)
-        menuAnimController.setGifPositions(arrayOf(0, GifDrawable(this.resources, R.drawable.icon_menu).duration / 2))
+        menuAnimController.setGifPositions(
+            arrayOf(
+                0,
+                GifDrawable(this.resources, R.drawable.icon_menu).duration / 2
+            )
+        )
         gifImageButtonMenu.setImageDrawable(menuAnimController.getGifDrawable())
     }
+
     private fun onChangeEditState() {
         if (isEditMode) {
             buttonEditing.setText(R.string.edit_ru)
@@ -85,8 +95,7 @@ class AccountActivity : AppCompatActivity() {
                 gravity = Gravity.CENTER
                 textSize = 20F
             }
-        }
-        else {
+        } else {
             buttonEditing.setText(R.string.accept_ru)
             buttonCancel.visibility = View.VISIBLE
             imageButtonChangePhoto.visibility = View.VISIBLE
@@ -100,13 +109,15 @@ class AccountActivity : AppCompatActivity() {
         }
         isEditMode = !isEditMode
     }
+
     private fun onMenuClicked() {
         val animPosition = menuAnimController.startAnimation()
         if (animPosition < 0) return
-        if (isMenuOpened)
+        if (isMenuOpened) {
             drawerLayout.closeDrawer(GravityCompat.START)
-        else
+        } else {
             drawerLayout.openDrawer(GravityCompat.START)
+        }
         isMenuOpened = !isMenuOpened
     }
 }

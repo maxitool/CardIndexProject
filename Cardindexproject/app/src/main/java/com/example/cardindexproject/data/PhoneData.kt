@@ -5,7 +5,9 @@ import com.example.cardindexproject.R
 
 class PhoneData {
     var phone: String = ""
-        private set(value) { this.phone = regex.replace(value, "+$1 $2 $3-$4-$5") }
+        private set(value) {
+            this.phone = regex.replace(value, "+$1 $2 $3-$4-$5")
+        }
 
     fun setPhoneNumber(value: String, countryCode: String): String {
         var indexPhoneCountryCode: Int? = null
@@ -17,19 +19,23 @@ class PhoneData {
         }
         indexPhoneCountryCode ?: return ErrorsCodes.BAD_COUNTRY_CODE
         var editedPhone = value
-        if (indexPhoneCountryCode != 0) // 0 - базовый тел. код страны
-            editedPhone = phoneCountryCodesMap[countryCode]!![0] + editedPhone.substring(phoneCountryCodesMap[countryCode]!![indexPhoneCountryCode!!].length)
-        if (editedPhone.length != countPhoneDigits)
-            return  ErrorsCodes.FEW_DIGITS
+        if (indexPhoneCountryCode != 0) { // 0 - базовый тел. код страны
+            editedPhone =
+                phoneCountryCodesMap[countryCode]!![0] + editedPhone.substring(phoneCountryCodesMap[countryCode]!![indexPhoneCountryCode!!].length)
+        }
+        if (editedPhone.length != countPhoneDigits) {
+            return ErrorsCodes.FEW_DIGITS
+        }
         this.phone = editedPhone
         return ErrorsCodes.OK
     }
 
-    companion object{
+    companion object {
         private val regex = """(\d{2})(\d{3})(\d{3})(\d{2})(\d{2})""".toRegex()
         private val countPhoneDigits = 12
-        private val phoneCountryCodesMap : Map<String, Array<String>> = mapOf(
-            "ru" to arrayOf("+7", "7", "8"))
+        private val phoneCountryCodesMap: Map<String, Array<String>> = mapOf(
+            "ru" to arrayOf("+7", "7", "8")
+        )
 
         class ErrorsCodes {
             companion object {

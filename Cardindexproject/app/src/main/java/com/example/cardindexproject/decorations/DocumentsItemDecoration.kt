@@ -8,8 +8,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardindexproject.R
 
-class DocumentsItemDecoration(context: Context): RecyclerView.ItemDecoration() {
-    private val mDivider: Drawable = ContextCompat.getDrawable(context, R.drawable.divider_documents)!!
+class DocumentsItemDecoration(context: Context) : RecyclerView.ItemDecoration() {
+    private val mDivider: Drawable =
+        ContextCompat.getDrawable(context, R.drawable.divider_documents)!!
 
     override fun onDrawOver(c: Canvas, parent: RecyclerView) {
         val left = parent.paddingLeft

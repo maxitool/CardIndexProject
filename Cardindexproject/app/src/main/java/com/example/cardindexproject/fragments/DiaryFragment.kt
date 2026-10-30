@@ -3,17 +3,15 @@ package com.example.cardindexproject.fragments
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Orientation
 import com.example.cardindexproject.R
 import com.example.cardindexproject.adapters.RecyclerViewDocumentsAdapter
 import com.example.cardindexproject.data.DocumentShortData
@@ -45,16 +43,73 @@ class DiaryFragment : Fragment() {
     private lateinit var imageViewButtonSearch: ImageButton
 
     val firstApiFormat: DateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-    val date = LocalDate.parse("03-08-2024" , firstApiFormat)
+    val date = LocalDate.parse("03-08-2024", firstApiFormat)
     val arrayListNotes: ArrayList<DocumentShortData> = arrayListOf(
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", null),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", true),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", false),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", false),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", true),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", null),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", null),
-        DocumentShortData(date, "Шариков Полиграф Полиграфович", date, "Пульпит 27", "Кузнецов Иван Михайлович", null))
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            null
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            true
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            false
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            false
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            true
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            null
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            null
+        ),
+        DocumentShortData(
+            date,
+            "Шариков Полиграф Полиграфович",
+            date,
+            "Пульпит 27",
+            "Кузнецов Иван Михайлович",
+            null
+        )
+    )
 
     private lateinit var adapter: RecyclerViewDocumentsAdapter
 
@@ -82,8 +137,10 @@ class DiaryFragment : Fragment() {
         recyclerViewNotes = view.findViewById(R.id.recyclerViewNotes)
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerViewNotes.layoutManager = linearLayoutManager
-        adapter = RecyclerViewDocumentsAdapter(requireContext(),
-            documentsCallbacks!!, arrayListNotes, TypesOfDisplayNotes.TYPE_CURRENT)
+        adapter = RecyclerViewDocumentsAdapter(
+            requireContext(),
+            documentsCallbacks!!, arrayListNotes, TypesOfDisplayNotes.TYPE_CURRENT
+        )
         recyclerViewNotes.adapter = adapter
         val documentsItemDecoration = DocumentsItemDecoration(requireContext())
         recyclerViewNotes.addItemDecoration(documentsItemDecoration)
@@ -116,22 +173,27 @@ class DiaryFragment : Fragment() {
         documentsCallbacks = null
     }
 
-    private fun onAddDocument() { callbacks!!.onAddDocument() }
+    private fun onAddDocument() {
+        callbacks!!.onAddDocument()
+    }
 
     private fun changeState(button: AppCompatButton) {
         val indexSelectedButton = arrayIdButtons.indexOf(button)
-        if (indexSelectedButton == -1)
+        if (indexSelectedButton == -1) {
             return
+        }
         var typeOfDisplayDoc: TypesOfDisplayNotes = TypesOfDisplayNotes.TYPE_CURRENT
-        when(indexSelectedButton) {
+        when (indexSelectedButton) {
             0 -> {
                 typeOfDisplayDoc = TypesOfDisplayNotes.TYPE_CURRENT
                 imageButtonAllSendToServer.visibility = View.GONE
             }
+
             1 -> {
                 typeOfDisplayDoc = TypesOfDisplayNotes.TYPE_HISTORY
                 imageButtonAllSendToServer.visibility = View.VISIBLE
             }
+
             2 -> {
                 typeOfDisplayDoc = TypesOfDisplayNotes.TYPE_SERVER
                 imageButtonAllSendToServer.visibility = View.GONE
@@ -150,13 +212,13 @@ class DiaryFragment : Fragment() {
     }
 
     private fun onChangeSearchMenuState() {
-        var idBack = 0; var idImage = 0
+        var idBack = 0;
+        var idImage = 0
         if (isSearchMenuVisible) {
             idBack = R.drawable.shape_main_document_alternative_button
             idImage = R.drawable.icon_search_drop_down
             linearLayoutSearchMenu.visibility = View.GONE
-        }
-        else {
+        } else {
             idBack = R.drawable.shape_main_document_important_button
             idImage = R.drawable.icon_search_drop_up
             linearLayoutSearchMenu.visibility = View.VISIBLE

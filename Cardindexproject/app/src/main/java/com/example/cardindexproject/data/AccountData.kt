@@ -14,7 +14,15 @@ class AccountData {
         this.login = login
         this.password = password
     }
-    constructor(login: String, fullName: String, phone: String, institutionName: String, institutionINN: String, institutionType: Int) {
+
+    constructor(
+        login: String,
+        fullName: String,
+        phone: String,
+        institutionName: String,
+        institutionINN: String,
+        institutionType: Int
+    ) {
         this.login = login
         this.fullName = fullName
         this.institutionName = institutionName
@@ -22,7 +30,16 @@ class AccountData {
         this.institutionType = institutionType
         this.phoneClass.setPhoneNumber(phone, "ru")
     }
-    constructor(login: String, password: String, fullName: String, phone: String, institutionName: String, institutionINN: String, institutionType: Int) {
+
+    constructor(
+        login: String,
+        password: String,
+        fullName: String,
+        phone: String,
+        institutionName: String,
+        institutionINN: String,
+        institutionType: Int
+    ) {
         this.login = login
         this.password = password
         this.fullName = fullName
@@ -31,19 +48,31 @@ class AccountData {
         this.institutionType = institutionType
         this.phoneClass.setPhoneNumber(phone, "ru")
     }
-    fun setPhoneNumber(phone: String): String { return this.phoneClass.setPhoneNumber(phone, "ru") }
-    fun getPhoneNumber(): String { return phoneClass.phone }
 
-    companion object{
-        private val mapInstitutionType: Map<Int, String> = mapOf(0 to "Клиника", 1 to "Поликлиника", 2 to "ВЧ (организация)")
+    fun setPhoneNumber(phone: String): String {
+        return this.phoneClass.setPhoneNumber(phone, "ru")
+    }
+
+    fun getPhoneNumber(): String {
+        return phoneClass.phone
+    }
+
+    companion object {
+        private val mapInstitutionType: Map<Int, String> =
+            mapOf(0 to "Клиника", 1 to "Поликлиника", 2 to "ВЧ (организация)")
 
         /** * Get institution type.
          * @param id Id of institution
          * @return Institution type */
-        fun getInstitutionType(id: Int): String { return mapInstitutionType[id % mapInstitutionType.size]!! }
+        fun getInstitutionType(id: Int): String {
+            return mapInstitutionType[id % mapInstitutionType.size]!!
+        }
+
         /** * Get id of institution type.
          * @param typeInstitution String institution type
          * @return Id of institution type */
-        fun getInstitutionId(typeInstitution: String): Int? { return mapInstitutionType.filterValues { it == typeInstitution }.keys.first() }
+        fun getInstitutionId(typeInstitution: String): Int? {
+            return mapInstitutionType.filterValues { it == typeInstitution }.keys.first()
+        }
     }
 }

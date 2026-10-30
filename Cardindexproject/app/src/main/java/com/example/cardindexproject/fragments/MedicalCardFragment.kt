@@ -3,15 +3,14 @@ package com.example.cardindexproject.fragments
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
 import com.example.cardindexproject.R
 import com.example.cardindexproject.collections.DropViewArrayList
 
@@ -38,7 +37,7 @@ class MedicalCardFragment : Fragment() {
     private lateinit var imageButtonCloseDocument: ImageButton
     private lateinit var imageButtonSaveDocument: ImageButton
 
-    interface Callbacks{
+    interface Callbacks {
         fun onDocumentClosed()
         fun onDocumentSaved()
     }
@@ -61,16 +60,37 @@ class MedicalCardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arrayListDropEdit = DropViewArrayList(view)
-        arrayListDropEdit.add(R.id.linearLayoutComplaints, R.id.imageViewComplaints, R.id.editTextComplaints)
-        arrayListDropEdit.add(R.id.linearLayoutAnamnesis, R.id.imageViewAnamnesis, R.id.editTextAnamnesis)
-        arrayListDropEdit.add(R.id.linearLayoutObjectively, R.id.imageViewObjectively, R.id.editTextObjectively)
-        arrayListDropEdit.add(R.id.linearLayoutDiagnosis, R.id.imageViewDiagnosis, R.id.editTextDiagnosis)
-        arrayListDropEdit.add(R.id.linearLayoutTreatment, R.id.imageViewTreatment, R.id.editTextTreatment)
+        arrayListDropEdit.add(
+            R.id.linearLayoutComplaints,
+            R.id.imageViewComplaints,
+            R.id.editTextComplaints
+        )
+        arrayListDropEdit.add(
+            R.id.linearLayoutAnamnesis,
+            R.id.imageViewAnamnesis,
+            R.id.editTextAnamnesis
+        )
+        arrayListDropEdit.add(
+            R.id.linearLayoutObjectively,
+            R.id.imageViewObjectively,
+            R.id.editTextObjectively
+        )
+        arrayListDropEdit.add(
+            R.id.linearLayoutDiagnosis,
+            R.id.imageViewDiagnosis,
+            R.id.editTextDiagnosis
+        )
+        arrayListDropEdit.add(
+            R.id.linearLayoutTreatment,
+            R.id.imageViewTreatment,
+            R.id.editTextTreatment
+        )
         arrayListDropEdit.add(R.id.linearLayoutFiles, R.id.imageViewFiles, R.id.imageButtonFiles)
         arrayListDropEdit.deleteViewReference()
         setDropViewsState()
-        for (i in 0 until arrayListDropEdit.size)
+        for (i in 0 until arrayListDropEdit.size) {
             arrayListDropEdit[i].linearLayout.setOnClickListener { onDropViewAction(it as LinearLayout?) }
+        }
         imageButtonCloseDocument = view.findViewById(R.id.imageButtonCloseDocument)
         imageButtonCloseDocument.setOnClickListener { onDocumentClosed() }
         imageButtonSaveDocument = view.findViewById(R.id.imageButtonSaveDocument)
@@ -90,9 +110,11 @@ class MedicalCardFragment : Fragment() {
     }
 
     private fun onDropViewAction(linearLayout: LinearLayout?) {
-        linearLayout?: return
+        linearLayout ?: return
         val index = arrayListDropEdit.indexOfFirst { it.linearLayout == linearLayout }
-        if (index < 0) return
+        if (index < 0) {
+            return
+        }
         arrayListDropEdit[index].run {
             if (isDropped) {
                 imageView.setImageResource(R.drawable.icon_down_arrow)
@@ -100,8 +122,7 @@ class MedicalCardFragment : Fragment() {
                     visibility = View.GONE
                 }
                 inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
-            }
-            else {
+            } else {
                 imageView.setImageResource(R.drawable.icon_remove)
                 dropView.apply {
                     startAnimation(AnimationUtils.loadAnimation(context, R.anim.drop_down))
@@ -113,10 +134,11 @@ class MedicalCardFragment : Fragment() {
     }
 
     private fun setDropViewsState() {
-        for (i in 0 until arrayListDropEdit.size)
+        for (i in 0 until arrayListDropEdit.size) {
             arrayListDropEdit[i].dropView.apply {
                 visibility = View.GONE
             }
+        }
     }
 
     private fun onDocumentClosed() {
@@ -124,7 +146,7 @@ class MedicalCardFragment : Fragment() {
     }
 
     private fun onDocumentSaved() {
-        callbacks?: return
+        callbacks ?: return
         callbacks!!.onDocumentSaved()
         imageButtonSaveDocument.setImageResource(R.drawable.icon_save_green)
     }

@@ -27,10 +27,13 @@ class LoginActivity : AppCompatActivity() {
     private val loginViewModel: LoginViewModel by lazy {
         ViewModelProvider(this)[LoginViewModel::class.java]
     }
+
     // Класс с настройками
     private lateinit var settings: Settings
+
     // Все для анимации глаза
     private lateinit var eyeAnimController: AnimationController
+
     // Все view
     private lateinit var main: LinearLayout
     private lateinit var toolbar: Toolbar
@@ -58,12 +61,14 @@ class LoginActivity : AppCompatActivity() {
         initAnimations()
         setColors()
     }
+
     override fun onPause() {
         super.onPause()
         eyeAnimController.stopAnimation()
         loginViewModel.loginText = editTextTextEmailAddress.text.toString()
         loginViewModel.passwordText = editTextTextPassword.text.toString()
     }
+
     override fun onResume() {
         super.onResume()
         eyeAnimController.changeAnimPosition(loginViewModel.eyeAnimPosition)
@@ -71,10 +76,16 @@ class LoginActivity : AppCompatActivity() {
         editTextTextEmailAddress.setText(loginViewModel.loginText)
         editTextTextPassword.setText(loginViewModel.passwordText)
     }
+
     /** * Initializing animations. */
     private fun initAnimations() {
         eyeAnimController = AnimationController(this, R.drawable.icon_eye)
-        eyeAnimController.setGifPositions(arrayOf(0, GifDrawable(this.resources, R.drawable.icon_eye).duration / 2))
+        eyeAnimController.setGifPositions(
+            arrayOf(
+                0,
+                GifDrawable(this.resources, R.drawable.icon_eye).duration / 2
+            )
+        )
         gifImageButtonEye = findViewById(R.id.gifImageButtonEye)
         gifImageButtonEye.setImageDrawable(eyeAnimController.getGifDrawable())
         // нажатие на глаз
@@ -82,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
             changeEyeState()
         }
     }
+
     /** * Initializing views. */
     private fun initAllViews() {
         main = findViewById(R.id.main)
@@ -104,24 +116,31 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
     /** * Set colors for views. */
     private fun setColors() {
         main.setBackgroundResource(settings.colorsSettings.getGradientBackground())
         toolbar.setBackgroundResource(settings.colorsSettings.getGradientHeader())
-        CompoundButtonCompat.setButtonTintList(checkBoxRememberMe, ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant()))
+        CompoundButtonCompat.setButtonTintList(
+            checkBoxRememberMe,
+            ContextCompat.getColorStateList(this, settings.colorsSettings.getColorImportant())
+        )
         buttonLogin.setBackgroundResource(settings.colorsSettings.getColorImportant())
     }
+
     /** * Set password state (show or don't show password). */
     private fun setPasswordState() {
         // Глаз открыт
         if (loginViewModel.eyeAnimPosition == 0) {
-            editTextTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            editTextTextPassword.transformationMethod =
+                HideReturnsTransformationMethod.getInstance()
             editTextTextPassword.setSelection(editTextTextPassword.length())
             return
         }
         editTextTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
         editTextTextPassword.setSelection(editTextTextPassword.length())
     }
+
     /** * Change state of password and eye animation (open\close). */
     private fun changeEyeState() {
         val eyeAnimPosition = eyeAnimController.startAnimation()
