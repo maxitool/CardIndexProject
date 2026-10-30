@@ -9,7 +9,7 @@
 
 ## 🎬 Видеопрезентация UI
 
-[![Video Thumbnail](https://img.youtube.com/vi/8X4edNIsPFI/maxresdefault.jpg)](https://www.youtube.com/watch?v=8X4edNIsPFI)
+[![Video Thumbnail](https://img.youtube.com/vi/zl0KwNuNl3I/maxresdefault.jpg)](https://www.youtube.com/shorts/zl0KwNuNl3I)
 
 ## 🛠 Технологический стек и характеристики проекта
 * **Язык программирования:** Kotlin (с поддержкой Gradle Kotlin DSL)
