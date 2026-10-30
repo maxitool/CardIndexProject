@@ -9,12 +9,7 @@
 
 ## 🎬 Видеопрезентация UI
 
-<video src="https://github.com" controls="controls" style="max-width: 100%;">
-  Ваш браузер не поддерживает видео.
-</video>
-
-
-
+[![Video Thumbnail](https://img.youtube.com/vi/8X4edNIsPFI/maxresdefault.jpg)](https://www.youtube.com/watch?v=8X4edNIsPFI)
 
 ## 🛠 Технологический стек и характеристики проекта
 * **Язык программирования:** Kotlin (с поддержкой Gradle Kotlin DSL)
